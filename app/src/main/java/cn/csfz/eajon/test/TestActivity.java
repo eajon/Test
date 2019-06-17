@@ -70,7 +70,7 @@ public class TestActivity extends FlycoActivity {
 
     @Override
     public boolean canScroll() {
-        return false;
+        return true;
     }
 
     protected void init(Bundle savedInstanceState) {

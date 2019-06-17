@@ -3,6 +3,7 @@ package cn.csfz.eajon.test.base;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -38,7 +39,6 @@ public abstract class FlycoActivity extends BaseActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +48,24 @@ public abstract class FlycoActivity extends BaseActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
         viewPager.setScroll(canScroll());
+        if (canScroll()) {
+            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    flyco.setCurrentTab(position);
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+        }
 
         flyco.setTabData(onInitFlycoTab(fragments.size()));
         flyco.setOnTabSelectListener(new OnTabSelectListener() {
@@ -61,5 +79,6 @@ public abstract class FlycoActivity extends BaseActivity {
 
             }
         });
+
     }
 }
