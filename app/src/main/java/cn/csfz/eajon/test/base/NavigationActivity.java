@@ -2,9 +2,11 @@ package cn.csfz.eajon.test.base;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -41,7 +43,7 @@ public abstract class NavigationActivity extends BaseActivity {
             throw new ExceptionInInitializerError(fragments.size() + " != size of menu " + bottomNavigation.getMenu().size());
         }
         // set adapter
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), 0,fragments);
         viewPager.setAdapter(adapter);
         viewPager.setScroll(canScroll());
 
@@ -55,13 +57,14 @@ public abstract class NavigationActivity extends BaseActivity {
     /**
      * view pager adapter
      */
-    private class ViewPagerAdapter extends FragmentPagerAdapter {
+    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
         private List<Fragment> data;
 
-        private ViewPagerAdapter(FragmentManager fm, List<Fragment> data) {
-            super(fm);
+        public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior, List<Fragment> data) {
+            super(fm, behavior);
             this.data = data;
         }
+
 
         @Override
         public int getCount() {

@@ -8,8 +8,9 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
-    implementation 'com.gitee.eajon:RxHttp:2.0.2'
+    implementation 'com.gitee.eajon:RxHttp:2.0.3'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha04'
 //    implementation 'com.pranavpandey.android:dynamic-dialogs:2.2.1'
     //无关测试使用
     //glide

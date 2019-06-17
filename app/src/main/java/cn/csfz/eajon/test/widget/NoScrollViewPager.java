@@ -1,5 +1,6 @@
 package cn.csfz.eajon.test.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import android.util.AttributeSet;
@@ -49,6 +50,7 @@ public class NoScrollViewPager extends ViewPager {
      * 消费:事件就结束
      * 不消费:往父控件传
      */
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         //return false;// 可行,不消费,传给父控件
