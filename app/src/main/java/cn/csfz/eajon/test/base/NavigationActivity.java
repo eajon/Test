@@ -10,10 +10,12 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import cn.csfz.eajon.test.R;
+import cn.csfz.eajon.test.adapter.ViewPagerAdapter;
 import cn.csfz.eajon.test.widget.NoScrollViewPager;
 
 /**
@@ -26,7 +28,7 @@ public abstract class NavigationActivity extends BaseActivity {
     NoScrollViewPager viewPager;
 
 
-    public abstract List<Fragment> onInitFragments(int capacity);
+    public abstract ArrayList<Fragment> onInitFragments(int capacity);
 
     public abstract boolean canScroll();
 
@@ -38,12 +40,12 @@ public abstract class NavigationActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        List<Fragment> fragments = onInitFragments(bottomNavigation.getMenu().size());
+        ArrayList<Fragment> fragments = onInitFragments(bottomNavigation.getMenu().size());
         if (null != fragments && fragments.size() != bottomNavigation.getMenu().size()) {
             throw new ExceptionInInitializerError(fragments.size() + " != size of menu " + bottomNavigation.getMenu().size());
         }
         // set adapter
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), 0,fragments);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
         viewPager.setScroll(canScroll());
 
@@ -54,29 +56,7 @@ public abstract class NavigationActivity extends BaseActivity {
         bottomNavigation.enableItemShiftingMode(false);
     }
 
-    /**
-     * view pager adapter
-     */
-    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
-        private List<Fragment> data;
 
-        public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior, List<Fragment> data) {
-            super(fm, behavior);
-            this.data = data;
-        }
-
-
-        @Override
-        public int getCount() {
-            return data.size();
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return data.get(position);
-        }
-
-    }
 
 
 }

@@ -40,8 +40,8 @@ public class MainActivity extends NavigationActivity {
     }
 
     @Override
-    public List<Fragment> onInitFragments(int capacity) {
-        List<Fragment> fragments = new ArrayList<>(capacity);
+    public ArrayList<Fragment> onInitFragments(int capacity) {
+        ArrayList<Fragment> fragments = new ArrayList<>(capacity);
 
         // create music fragment and add it
         MyFragment musicFragment = new MyFragment();
@@ -60,6 +60,7 @@ public class MainActivity extends NavigationActivity {
         bundle = new Bundle();
         bundle.putString(PAGE_TITLE, "好友");
         friendsFragment.setArguments(bundle);
+
 
         fragments.add(musicFragment);
         fragments.add(backupFragment);
