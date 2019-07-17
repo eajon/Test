@@ -1,13 +1,11 @@
 package cn.csfz.eajon.test;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.fragment.app.Fragment;
 
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +15,7 @@ import butterknife.ButterKnife;
 import cn.csfz.eajon.test.base.NavigationActivity;
 import cn.csfz.eajon.test.base.Response;
 import cn.csfz.eajon.test.fragment.MyFragment;
-import cn.csfz.eajon.test.util.SpUtil;
+import cn.csfz.eajon.test.util.SpUtils;
 
 
 public class MainActivity extends NavigationActivity {
@@ -32,15 +30,15 @@ public class MainActivity extends NavigationActivity {
         responseArrayList.add(response);
         Map<String,Response> hashMap =new HashMap<>();
         hashMap.put("3",response);
-//        SpUtil.getInstance().putData("1",response);
-//        SpUtil.getInstance().putData("2",responseArrayList);
-//        SpUtil.getInstance().putData("3",hashMap);
-        SpUtil.getInstance().putData("5","5");
-//        SpUtil.getInstance().putData("4",String.class);
-        Response response1 =SpUtil.getInstance().getData("1",Response.class);
-        List<Response> response2 =SpUtil.getInstance().getData("2",new TypeToken<List<Response>>(){});
-        HashMap<String,Response> response3 =SpUtil.getInstance().getData("3",new TypeToken<HashMap<String,Response>>(){});
-        String a = SpUtil.getInstance().getData("5",String.class);
+//        SpUtils.getInstance().putData("1",response);
+//        SpUtils.getInstance().putData("2",responseArrayList);
+//        SpUtils.getInstance().putData("3",hashMap);
+        SpUtils.getInstance().putData("5","5");
+//        SpUtils.getInstance().putData("4",String.class);
+        Response response1 = SpUtils.getInstance().getData("1",Response.class);
+        List<Response> response2 = SpUtils.getInstance().getData("2",new TypeToken<List<Response>>(){});
+        HashMap<String,Response> response3 = SpUtils.getInstance().getData("3",new TypeToken<HashMap<String,Response>>(){});
+        String a = SpUtils.getInstance().getData("5",String.class);
 
     }
 
