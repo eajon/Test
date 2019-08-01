@@ -13,8 +13,8 @@ import javax.crypto.Cipher;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-import static cn.csfz.eajon.test.util.ConvertUtils.bytes2HexString;
-import static cn.csfz.eajon.test.util.ConvertUtils.hexString2Bytes;
+import static cn.eajon.tool.ConvertUtils.bytes2HexString;
+import static cn.eajon.tool.ConvertUtils.hexString2Bytes;
 
 /**
  * <pre>
@@ -27,7 +27,7 @@ import static cn.csfz.eajon.test.util.ConvertUtils.hexString2Bytes;
 public class EncryptUtils {
 
     private EncryptUtils() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
+        throw new AssertionError();
     }
 
     /*********************** 哈希加密相关 ***********************/
@@ -48,7 +48,7 @@ public class EncryptUtils {
      * @return 16进制密文
      */
     public static String encryptMD2ToString(byte[] data) {
-        return ConvertUtils.bytes2HexString(encryptMD2(data));
+        return bytes2HexString(encryptMD2(data));
     }
 
     /**

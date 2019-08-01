@@ -101,6 +101,7 @@ public class LocationUtils {
     /**
      * 注销
      */
+    @SuppressLint("MissingPermission")
     public static void unregister() {
         if (mLocationManager != null) {
             if (myLocationListener != null) {

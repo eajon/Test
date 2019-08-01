@@ -5,17 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_DATE;
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_EMAIL;
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_ID_CARD15;
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_ID_CARD18;
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_IP;
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_MOBILE_EXACT;
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_MOBILE_SIMPLE;
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_TEL;
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_URL;
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_USERNAME;
-import static cn.csfz.eajon.test.util.ConstUtils.REGEX_ZH;
+import static cn.eajon.tool.ConstUtils.*;
 
 
 /**

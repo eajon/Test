@@ -16,7 +16,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
-import static cn.csfz.eajon.test.util.ConstUtils.KB;
+import static cn.eajon.tool.ConstUtils.KB;
 
 /**
  * <pre>

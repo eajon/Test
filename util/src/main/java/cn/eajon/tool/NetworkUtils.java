@@ -1,5 +1,6 @@
 package cn.eajon.tool;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -60,6 +61,7 @@ public class NetworkUtils {
      *
      * @return NetworkInfo
      */
+    @SuppressLint("MissingPermission")
     private static NetworkInfo getActiveNetworkInfo() {
         ConnectivityManager cm = ( ConnectivityManager ) Utils.getContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -178,6 +180,7 @@ public class NetworkUtils {
      *
      * @return {@code true}: 连接<br>{@code false}: 未连接
      */
+    @SuppressLint("MissingPermission")
     public static boolean isWifiConnected() {
         ConnectivityManager cm = ( ConnectivityManager ) Utils.getContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -11,7 +11,7 @@ package cn.eajon.tool;
 public class ConstUtils {
 
     private ConstUtils() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
+        throw new AssertionError();
     }
 
     /******************** 存储相关常量 ********************/
