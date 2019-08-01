@@ -7,7 +7,7 @@ public class Utils {
     private static Context context;
 
     private Utils() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
+        throw new AssertionError();
     }
 
     /**

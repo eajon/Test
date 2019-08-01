@@ -20,7 +20,7 @@ public class ActivityUtils {
 
 
     private ActivityUtils() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
+        throw new AssertionError();
     }
 
     /**

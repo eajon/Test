@@ -14,6 +14,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class SDCardUtils {
+
+    private SDCardUtils() {
+        throw new AssertionError();
+    }
+
     public static String SDCardRoot = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator;
 
     /**

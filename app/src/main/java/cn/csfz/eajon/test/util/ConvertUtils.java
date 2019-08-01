@@ -28,7 +28,7 @@ import java.io.UnsupportedEncodingException;
 public class ConvertUtils {
 
     private ConvertUtils() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
+        throw new AssertionError();
     }
 
     private static final char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};

@@ -185,6 +185,11 @@ public class MediaFileUtils {
         addFileType("MPEG", FILE_TYPE_MP2PS, "video/mp2p");
     }
 
+
+    private MediaFileUtils() {
+        throw new AssertionError();
+    }
+
     /**
      * check is audio or not
      *

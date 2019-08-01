@@ -11,7 +11,7 @@ package cn.csfz.eajon.test.util;
 public class StringUtils {
 
     private StringUtils() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
+        throw new AssertionError();
     }
 
     /**

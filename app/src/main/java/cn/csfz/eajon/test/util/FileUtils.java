@@ -33,7 +33,7 @@ import java.util.List;
 public class FileUtils {
 
     private FileUtils() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
+        throw new AssertionError();
     }
 
     /**

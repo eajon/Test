@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import com.google.gson.reflect.TypeToken;
+import com.github.eajon.util.LoggerUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,8 +38,7 @@ public class MainActivity extends NavigationActivity {
 //        SpUtils.getInstance().putData("3",hashMap);
 //        SpUtils.getInstance().putData("5","5");
 //        SpUtils.getInstance().putData("5", TestActivity.class);
-        SpUtils.getInstance().putData("4", "4", new TypeToken<List<Response>>() {
-        }.getType());
+        SpUtils.putData("4", response);
 //        Response response1 = SpUtils.getInstance().getData("1",Response.class);
 //        List<Response> response2 = SpUtils.getInstance().getData("2",new TypeToken<List<Response>>(){});
 //        HashMap<String,Response> response3 = SpUtils.getInstance().getData("3",new TypeToken<HashMap<String,Response>>(){});
@@ -50,8 +49,8 @@ public class MainActivity extends NavigationActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SpUtils.getInstance().getData("4", String.class);
-
+        Response data = SpUtils.getData("4", Response.class);
+        LoggerUtils.error("data" + data.toString());
 
 
     }
