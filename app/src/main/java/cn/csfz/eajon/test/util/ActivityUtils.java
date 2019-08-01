@@ -9,6 +9,8 @@ import android.util.DisplayMetrics;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+
 /**
  * Created By eajon on 2019/5/16.
  */
@@ -81,11 +83,14 @@ public class ActivityUtils {
     public static void toActivity(Activity self, Class activity, Object data) {
         Intent intent = new Intent();
         intent.setClass(self, activity);
-        try {
-            intent.putExtra(DATA, new Gson().toJson(data));
-        } catch (Exception e) {
-            throw new UnsupportedOperationException(e.getMessage());
-        }
+        intent.putExtra(DATA, new Gson().toJson(data));
+        self.startActivity(intent);
+    }
+
+    public static void toActivity(Activity self, Class activity, Type type, Object data) {
+        Intent intent = new Intent();
+        intent.setClass(self, activity);
+        intent.putExtra(DATA, new Gson().toJson(data, type));
         self.startActivity(intent);
     }
 
@@ -99,32 +104,26 @@ public class ActivityUtils {
     public static void toActivityForResult(Activity self, Class activity, Object data, int requestCode) {
         Intent intent = new Intent();
         intent.setClass(self, activity);
-        try {
-            intent.putExtra(DATA, new Gson().toJson(data));
-        } catch (Exception e) {
-            throw new UnsupportedOperationException(e.getMessage());
-        }
+        intent.putExtra(DATA, new Gson().toJson(data));
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Activity self, Class activity, Object data, Type type, int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(self, activity);
+        intent.putExtra(DATA, new Gson().toJson(data, type));
         self.startActivityForResult(intent, requestCode);
     }
 
 
     @SuppressWarnings("unchecked")
     public static <T> T getData(Activity self, Class<T> val) {
-        try {
-            return new Gson().fromJson(self.getIntent().getStringExtra(DATA), val);
-        } catch (Exception e) {
-            throw new UnsupportedOperationException(e.getMessage());
-        }
-
+        return new Gson().fromJson(self.getIntent().getStringExtra(DATA), val);
     }
 
     @SuppressWarnings("unchecked")
     public static <T> T getData(Activity self, TypeToken<T> val) {
-        try {
-            return new Gson().fromJson(self.getIntent().getStringExtra(DATA), val.getType());
-        } catch (Exception e) {
-            throw new UnsupportedOperationException(e.getMessage());
-        }
+        return new Gson().fromJson(self.getIntent().getStringExtra(DATA), val.getType());
     }
 
 

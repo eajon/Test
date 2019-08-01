@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+
 
 public class SpUtils {
 
@@ -33,31 +35,28 @@ public class SpUtils {
     }
 
 
+    //Only Support primitt
     public boolean putData(String key, Object val) {
         SharedPreferences.Editor editor = sp.edit();
-        try {
-            editor.putString(key, new Gson().toJson(val));
-        } catch (Exception e) {
-            throw new UnsupportedOperationException(e.getMessage());
-        }
+        editor.putString(key, new Gson().toJson(val));
+        return editor.commit();
+    }
+
+    //Only Support primitt
+    public boolean putData(String key, Object val, Type type) {
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(key, new Gson().toJson(val, type));
         return editor.commit();
     }
 
     @SuppressWarnings("unchecked")
     public <T> T getData(String key, Class<T> val) {
-        try {
             return new Gson().fromJson(sp.getString(key, ""), val);
-        } catch (Exception e) {
-            throw new UnsupportedOperationException(e.getMessage());
-        }
     }
 
     @SuppressWarnings("unchecked")
     public <T> T getData(String key, TypeToken<T> val) {
-        try {
             return new Gson().fromJson(sp.getString(key, ""), val.getType());
-        } catch (Exception e) {
-            throw new UnsupportedOperationException(e.getMessage());
-        }
+
     }
 }
