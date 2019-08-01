@@ -35,18 +35,30 @@ public class SpUtils {
     }
 
 
-    //Only Support primitt
+
     public boolean putData(String key, Object val) {
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(key, new Gson().toJson(val));
         return editor.commit();
     }
 
-    //Only Support primitt
     public boolean putData(String key, Object val, Type type) {
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(key, new Gson().toJson(val, type));
         return editor.commit();
+    }
+
+
+    public void putDataAsync(String key, Object val) {
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(key, new Gson().toJson(val));
+        editor.apply();
+    }
+
+    public void putDataAsync(String key, Object val, Type type) {
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(key, new Gson().toJson(val, type));
+        editor.apply();
     }
 
     @SuppressWarnings("unchecked")
