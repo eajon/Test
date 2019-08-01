@@ -1,10 +1,9 @@
-package cn.csfz.eajon.test.util;
+package cn.eajon.tool;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -60,18 +59,6 @@ public class ActivityUtils {
      */
     public static void launchActivity(Context context, String packageName, String className, Bundle bundle) {
         context.startActivity(IntentUtils.getComponentIntent(packageName, className, bundle));
-    }
-
-    public static int getWidth(Activity self) {
-        DisplayMetrics dm = new DisplayMetrics();
-        self.getWindowManager().getDefaultDisplay().getMetrics(dm);
-        return dm.widthPixels;
-    }
-
-    public static int getHeight(Activity self) {
-        DisplayMetrics dm = new DisplayMetrics();
-        self.getWindowManager().getDefaultDisplay().getMetrics(dm);
-        return dm.heightPixels;
     }
 
     public static void toActivity(Activity self, Class activity) {

@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test.util;
+package cn.eajon.tool;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

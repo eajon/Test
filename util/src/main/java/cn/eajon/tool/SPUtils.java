@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.csfz.eajon.test.util;
+package cn.eajon.tool;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -30,10 +30,10 @@ import java.lang.reflect.Type;
  * time   : 2016/7/27 22:26
  * email  : vikingden@live.com
  */
-public class SpUtils {
+public class SPUtils {
     public static String PREFERENCE_NAME = null;
 
-    private SpUtils() {
+    private SPUtils() {
         throw new AssertionError();
     }
 
@@ -66,7 +66,7 @@ public class SpUtils {
      * modifications to the data in the preferences and atomically commit those
      * changes back to the SharedPreferences object.
      *
-     * @return Returns a new instance of the {@link android.content.SharedPreferences.Editor} interface, allowing
+     * @return Returns a new instance of the {@link SharedPreferences.Editor} interface, allowing
      * you to modify the values in this SharedPreferences object.
      */
     private static SharedPreferences.Editor getEditor() {

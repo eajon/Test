@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test.util;
+package cn.eajon.tool;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
-
 import androidx.core.content.FileProvider;
 
 import java.io.File;
@@ -17,7 +16,7 @@ import java.io.File;
 public class IntentUtils {
 
     private IntentUtils() {
-        throw new AssertionError();
+        throw new UnsupportedOperationException("u can't fuck me...");
     }
 
     /**
@@ -26,8 +25,8 @@ public class IntentUtils {
      * @param filePath 文件路径
      * @return intent
      */
-    public static Intent getInstallAppIntent(String filePath, String packageName) {
-        return getInstallAppIntent(FileUtils.getFileByPath(filePath), packageName);
+    public static Intent getInstallAppIntent(String filePath) {
+        return getInstallAppIntent(FileUtils.getFileByPath(filePath));
     }
 
     /**
@@ -36,7 +35,7 @@ public class IntentUtils {
      * @param file 文件
      * @return intent
      */
-    public static Intent getInstallAppIntent(File file, String packageName) {
+    public static Intent getInstallAppIntent(File file) {
         if (file == null) return null;
         Intent intent = new Intent(Intent.ACTION_VIEW);
         String type;
@@ -48,7 +47,7 @@ public class IntentUtils {
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(Utils.getContext(), packageName + ".fileProvider", file);
+            Uri contentUri = FileProvider.getUriForFile(Utils.getContext(), "com.your.package.fileProvider", file);
             intent.setDataAndType(contentUri, type);
         }
         intent.setDataAndType(Uri.fromFile(file), type);
@@ -179,11 +178,6 @@ public class IntentUtils {
         return intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
-//    public static Intent getDailIntent(){
-//
-//    }
-
-
     /**
      * 获取拍照的意图
      *
@@ -195,4 +189,16 @@ public class IntentUtils {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, outUri);
         return intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_NEW_TASK);
     }
+
+
+    public static Intent getPickIntentWithGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        return intent.setType("image*//*");
+    }
+
+    public static Intent getPickIntentWithDocuments() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        return intent.setType("image*//*");
+    }
+
 }

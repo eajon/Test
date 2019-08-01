@@ -2,7 +2,8 @@ package cn.csfz.eajon.test;
 
 import android.app.Application;
 
-import cn.csfz.eajon.test.util.Utils;
+import cn.eajon.tool.Utils;
+
 
 /**
  * Created By eajon on 2019/7/16.

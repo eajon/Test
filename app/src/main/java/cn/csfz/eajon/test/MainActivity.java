@@ -16,8 +16,8 @@ import butterknife.ButterKnife;
 import cn.csfz.eajon.test.base.NavigationActivity;
 import cn.csfz.eajon.test.base.Response;
 import cn.csfz.eajon.test.fragment.MyFragment;
-import cn.csfz.eajon.test.util.SDCardUtils;
-import cn.csfz.eajon.test.util.SpUtils;
+import cn.eajon.tool.SDCardUtils;
+import cn.eajon.tool.SPUtils;
 import top.zibin.luban.Luban;
 
 
@@ -33,23 +33,23 @@ public class MainActivity extends NavigationActivity {
         responseArrayList.add(response);
         Map<String,Response> hashMap =new HashMap<>();
         hashMap.put("3",response);
-//        SpUtils.getInstance().putData("1",response);
-//        SpUtils.getInstance().putData("2",responseArrayList);
-//        SpUtils.getInstance().putData("3",hashMap);
-//        SpUtils.getInstance().putData("5","5");
-//        SpUtils.getInstance().putData("5", TestActivity.class);
-        SpUtils.putData("4", response);
-//        Response response1 = SpUtils.getInstance().getData("1",Response.class);
-//        List<Response> response2 = SpUtils.getInstance().getData("2",new TypeToken<List<Response>>(){});
-//        HashMap<String,Response> response3 = SpUtils.getInstance().getData("3",new TypeToken<HashMap<String,Response>>(){});
-//        String a = SpUtils.getInstance().getData("5",String.class);
+//        SPUtils.getInstance().putData("1",response);
+//        SPUtils.getInstance().putData("2",responseArrayList);
+//        SPUtils.getInstance().putData("3",hashMap);
+//        SPUtils.getInstance().putData("5","5");
+//        SPUtils.getInstance().putData("5", TestActivity.class);
+        SPUtils.putData("4", response);
+//        Response response1 = SPUtils.getInstance().getData("1",Response.class);
+//        List<Response> response2 = SPUtils.getInstance().getData("2",new TypeToken<List<Response>>(){});
+//        HashMap<String,Response> response3 = SPUtils.getInstance().getData("3",new TypeToken<HashMap<String,Response>>(){});
+//        String a = SPUtils.getInstance().getData("5",String.class);
         String path = "";
         try {
             String path2 = Luban.with(self).ignoreBy(1024).setTargetDir(SDCardUtils.getImageDir()).get(path).getAbsolutePath();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Response data = SpUtils.getData("4", Response.class);
+        Response data = SPUtils.getData("4", Response.class);
         LoggerUtils.error("data" + data.toString());
 
 

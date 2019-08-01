@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.csfz.eajon.test.util;
+package cn.eajon.tool;
 
 import java.util.HashMap;
 import java.util.Locale;
