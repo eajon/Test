@@ -31,4 +31,5 @@ dependencies {
     implementation 'me.jessyan:autosize:1.1.2'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
     implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
+    implementation 'top.zibin:Luban:1.1.8'
 }

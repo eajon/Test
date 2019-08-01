@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Array;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +16,9 @@ import butterknife.ButterKnife;
 import cn.csfz.eajon.test.base.NavigationActivity;
 import cn.csfz.eajon.test.base.Response;
 import cn.csfz.eajon.test.fragment.MyFragment;
+import cn.csfz.eajon.test.util.SDCardUtils;
 import cn.csfz.eajon.test.util.SpUtils;
+import top.zibin.luban.Luban;
 
 
 public class MainActivity extends NavigationActivity {
@@ -42,7 +44,12 @@ public class MainActivity extends NavigationActivity {
 //        List<Response> response2 = SpUtils.getInstance().getData("2",new TypeToken<List<Response>>(){});
 //        HashMap<String,Response> response3 = SpUtils.getInstance().getData("3",new TypeToken<HashMap<String,Response>>(){});
 //        String a = SpUtils.getInstance().getData("5",String.class);
-
+        String path = "";
+        try {
+            String path2 = Luban.with(self).ignoreBy(1024).setTargetDir(SDCardUtils.getImageDir()).get(path).getAbsolutePath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         SpUtils.getInstance().getData("4", String.class);
 
 
