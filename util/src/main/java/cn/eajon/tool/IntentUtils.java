@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
+
 import androidx.core.content.FileProvider;
 
 import java.io.File;
@@ -16,7 +17,7 @@ import java.io.File;
 public class IntentUtils {
 
     private IntentUtils() {
-        throw new UnsupportedOperationException("u can't fuck me...");
+        throw new AssertionError();
     }
 
     /**
@@ -47,12 +48,40 @@ public class IntentUtils {
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(Utils.getContext(), "com.your.package.fileProvider", file);
+            Uri contentUri = FileProvider.getUriForFile(Utils.getContext(), Utils.getContext().getPackageName() + ".fileprovider", file);
             intent.setDataAndType(contentUri, type);
         }
         intent.setDataAndType(Uri.fromFile(file), type);
         return intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     }
+
+    /**
+     * 获取安装App(支持6.0)的意图
+     *
+     * @param file      文件
+     * @param authority FileProvider.authority
+     * @return intent
+     */
+    public static Intent getInstallAppIntent(File file, String authority) {
+        if (file == null) return null;
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        String type;
+
+        if (Build.VERSION.SDK_INT < 23) {
+            type = "application/vnd.android.package-archive";
+        } else {
+            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(FileUtils.getFileExtension(file));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri contentUri = FileProvider.getUriForFile(Utils.getContext(), authority, file);
+            intent.setDataAndType(contentUri, type);
+        }
+        intent.setDataAndType(Uri.fromFile(file), type);
+        return intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    }
+
+
 
     /**
      * 获取卸载App的意图
