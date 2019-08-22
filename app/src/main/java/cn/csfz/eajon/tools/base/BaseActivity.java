@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test.base;
+package cn.csfz.eajon.tools.base;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.csfz.eajon.test.R;
+import cn.csfz.eajon.tools.R;
 
 /**
  * Created By eajon on 2019/5/17.

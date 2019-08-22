@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test.observer;
+package cn.csfz.eajon.tools.observer;
 
 import android.content.Context;
 
@@ -6,8 +6,8 @@ import com.github.eajon.exception.ApiException;
 import com.github.eajon.observer.HttpObserver;
 import com.google.gson.Gson;
 
-import cn.csfz.eajon.test.base.Response;
-import cn.csfz.eajon.test.common.CommonResponse;
+import cn.csfz.eajon.tools.base.Response;
+import cn.csfz.eajon.tools.common.CommonResponse;
 import es.dmoral.toasty.Toasty;
 
 public abstract class SolveObserver<T extends CommonResponse> extends HttpObserver<CommonResponse> {

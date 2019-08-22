@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test.base;
+package cn.csfz.eajon.tools.base;
 
 import java.io.Serializable;
 

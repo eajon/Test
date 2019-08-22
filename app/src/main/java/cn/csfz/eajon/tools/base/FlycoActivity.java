@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test.base;
+package cn.csfz.eajon.tools.base;
 
 import android.os.Bundle;
 
@@ -12,9 +12,9 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import cn.csfz.eajon.test.R;
-import cn.csfz.eajon.test.adapter.ViewPagerAdapter;
-import cn.csfz.eajon.test.widget.NoScrollViewPager;
+import cn.csfz.eajon.tools.R;
+import cn.csfz.eajon.tools.adapter.ViewPagerAdapter;
+import cn.csfz.eajon.tools.widget.NoScrollViewPager;
 
 /**
  * Created By eajon on 2019/6/17.

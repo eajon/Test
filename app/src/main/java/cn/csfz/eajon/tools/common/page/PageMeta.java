@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test.common.page;
+package cn.csfz.eajon.tools.common.page;
 
 public class PageMeta {
     private PageData pageData;

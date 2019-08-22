@@ -3,7 +3,7 @@ apply from: 'depends.gradle'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "cn.csfz.eajon.test"
+        applicationId "cn.csfz.eajon.tools"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1

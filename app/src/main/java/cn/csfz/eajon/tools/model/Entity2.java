@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test.model;
+package cn.csfz.eajon.tools.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

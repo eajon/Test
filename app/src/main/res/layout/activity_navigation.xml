@@ -14,7 +14,7 @@
         app:itemTextColor="@color/colorPrimaryDark"
         app:menu="@menu/menu_navigation" />
 
-    <cn.csfz.eajon.test.widget.NoScrollViewPager
+    <cn.csfz.eajon.tools.widget.NoScrollViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

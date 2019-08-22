@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test;
+package cn.csfz.eajon.tools;
 
 import android.os.Bundle;
 
@@ -8,12 +8,11 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 
 import java.util.ArrayList;
 
-import cn.csfz.eajon.test.base.BaseActivity;
-import cn.csfz.eajon.test.base.FlycoActivity;
-import cn.csfz.eajon.test.fragment.MyFragment;
-import cn.csfz.eajon.test.model.FlycoTab;
+import cn.csfz.eajon.tools.base.FlycoActivity;
+import cn.csfz.eajon.tools.fragment.MyFragment;
+import cn.csfz.eajon.tools.model.FlycoTab;
 
-import static cn.csfz.eajon.test.MainActivity.PAGE_TITLE;
+import static cn.csfz.eajon.tools.MainActivity.PAGE_TITLE;
 
 /**
  * Created By eajon on 2019/5/16.

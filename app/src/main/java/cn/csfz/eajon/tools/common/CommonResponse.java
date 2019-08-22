@@ -1,7 +1,7 @@
-package cn.csfz.eajon.test.common;
+package cn.csfz.eajon.tools.common;
 
 
-import cn.csfz.eajon.test.base.Response;
+import cn.csfz.eajon.tools.base.Response;
 
 public class CommonResponse<T> extends Response {
 

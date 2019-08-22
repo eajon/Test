@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test.adapter;
+package cn.csfz.eajon.tools.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created By eajon on 2019/6/17.

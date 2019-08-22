@@ -1,30 +1,17 @@
-package cn.csfz.eajon.test.base;
+package cn.csfz.eajon.tools.base;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 
-import com.google.gson.Gson;
 import com.trello.rxlifecycle3.components.support.RxFragment;
 
-import java.io.Serializable;
-import java.lang.reflect.Type;
-import java.util.Map;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.csfz.eajon.test.R;
 
 
 /**

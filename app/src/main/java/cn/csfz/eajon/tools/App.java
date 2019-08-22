@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test;
+package cn.csfz.eajon.tools;
 
 import android.app.Application;
 

@@ -1,22 +1,17 @@
-package cn.csfz.eajon.test.base;
+package cn.csfz.eajon.tools.base;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
-import cn.csfz.eajon.test.R;
-import cn.csfz.eajon.test.adapter.ViewPagerAdapter;
-import cn.csfz.eajon.test.widget.NoScrollViewPager;
+import cn.csfz.eajon.tools.R;
+import cn.csfz.eajon.tools.adapter.ViewPagerAdapter;
+import cn.csfz.eajon.tools.widget.NoScrollViewPager;
 
 /**
  * Created By eajon on 2019/5/17.

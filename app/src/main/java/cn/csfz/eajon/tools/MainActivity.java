@@ -1,4 +1,4 @@
-package cn.csfz.eajon.test;
+package cn.csfz.eajon.tools;
 
 import android.os.Bundle;
 
@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.ButterKnife;
-import cn.csfz.eajon.test.base.NavigationActivity;
-import cn.csfz.eajon.test.base.Response;
-import cn.csfz.eajon.test.fragment.MyFragment;
+import cn.csfz.eajon.tools.base.NavigationActivity;
+import cn.csfz.eajon.tools.base.Response;
+import cn.csfz.eajon.tools.fragment.MyFragment;
 import cn.eajon.tool.SDCardUtils;
 import cn.eajon.tool.SPUtils;
 import top.zibin.luban.Luban;
