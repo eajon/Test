@@ -1,31 +1,30 @@
 package cn.eajon.tool;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
+import android.app.Application;
 
-public class Utils {
+/**
+ * Created by liaohailiang on 2019/3/26.
+ */
+public final class Utils {
 
-    private static Context context;
+    @SuppressLint("StaticFieldLeak")
+    private static volatile Application application;
 
-    private Utils() {
-        throw new AssertionError();
-    }
-
-    /**
-     * 初始化工具类
-     *
-     * @param context 上下文
-     */
-    public static void init(Context context) {
-        Utils.context = context.getApplicationContext();
-    }
-
-    /**
-     * 获取ApplicationContext
-     *
-     * @return ApplicationContext
-     */
-    public static Context getContext() {
-        if (context != null) return context;
-        throw new NullPointerException("u should init first");
+    public static Application getContext() {
+        if (application == null) {
+            synchronized (Utils.class) {
+                if (application == null) {
+                    try {
+                        application = ( Application ) Class.forName("android.app.ActivityThread")
+                                .getMethod("currentApplication")
+                                .invoke(null, ( Object[] ) null);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        return application;
     }
 }

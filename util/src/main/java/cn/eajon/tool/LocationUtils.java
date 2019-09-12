@@ -82,7 +82,9 @@ public class LocationUtils {
      */
     @SuppressLint("MissingPermission")
     public static boolean register(long minTime, long minDistance, OnLocationChangeListener listener) {
-        if (listener == null) return false;
+        if (listener == null) {
+            return false;
+        }
         mLocationManager = ( LocationManager ) Utils.getContext().getSystemService(Context.LOCATION_SERVICE);
         mListener = listener;
         if (!isLocationEnabled()) {
@@ -91,8 +93,12 @@ public class LocationUtils {
         }
         String provider = mLocationManager.getBestProvider(getCriteria(), true);
         Location location = mLocationManager.getLastKnownLocation(provider);
-        if (location != null) listener.getLastKnownLocation(location);
-        if (myLocationListener == null) myLocationListener = new MyLocationListener();
+        if (location != null) {
+            listener.getLastKnownLocation(location);
+        }
+        if (myLocationListener == null) {
+            myLocationListener = new MyLocationListener();
+        }
         mLocationManager.requestLocationUpdates(provider, minTime, minDistance, myLocationListener);
         return true;
     }
@@ -145,7 +151,9 @@ public class LocationUtils {
         Geocoder geocoder = new Geocoder(Utils.getContext(), Locale.getDefault());
         try {
             List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-            if (addresses.size() > 0) return addresses.get(0);
+            if (addresses.size() > 0) {
+                return addresses.get(0);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -223,6 +231,8 @@ public class LocationUtils {
                     break;
                 case LocationProvider.TEMPORARILY_UNAVAILABLE:
                     LogUtils.d("onStatusChanged", "当前GPS状态为暂停服务状态");
+                    break;
+                default:
                     break;
             }
         }

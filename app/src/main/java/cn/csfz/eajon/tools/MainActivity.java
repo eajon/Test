@@ -18,12 +18,14 @@ import cn.csfz.eajon.tools.base.Response;
 import cn.csfz.eajon.tools.fragment.MyFragment;
 import cn.eajon.tool.SDCardUtils;
 import cn.eajon.tool.SPUtils;
+import cn.eajon.tool.ScreenUtils;
 import top.zibin.luban.Luban;
 
 
 public class MainActivity extends NavigationActivity {
 
     public final static String PAGE_TITLE = "page_title";
+
     @Override
     protected void init(Bundle savedInstanceState) {
         initToolBar(true, false, false, false, false, false);
@@ -39,6 +41,7 @@ public class MainActivity extends NavigationActivity {
 //        SPUtils.getInstance().putData("5","5");
 //        SPUtils.getInstance().putData("5", TestActivity.class);
         SPUtils.putData("4", response);
+        SPUtils.putData("5", 9);
 //        Response response1 = SPUtils.getInstance().getData("1",Response.class);
 //        List<Response> response2 = SPUtils.getInstance().getData("2",new TypeToken<List<Response>>(){});
 //        HashMap<String,Response> response3 = SPUtils.getInstance().getData("3",new TypeToken<HashMap<String,Response>>(){});
@@ -49,8 +52,9 @@ public class MainActivity extends NavigationActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        ScreenUtils.getScreenHeight();
         Response data = SPUtils.getData("4", Response.class);
-        LoggerUtils.error("data" + data.toString());
+        LoggerUtils.error("data" + SPUtils.getData("5", Integer.class));
 
 
     }

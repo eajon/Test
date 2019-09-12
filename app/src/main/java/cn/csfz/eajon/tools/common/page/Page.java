@@ -1,15 +1,15 @@
 package cn.csfz.eajon.tools.common.page;
 
 
-import com.github.eajon.annotation.Name;
+import com.github.eajon.annotation.GsonField;
 
 public class Page {
 
-    @Name(value = "pageNum")
+    @GsonField(value = "pageNum")
     private int page = 1;
-    @Name(value = "pageSize")
+    @GsonField(value = "pageSize")
     private int size = 10;
-    @Name(require = false)
+    @GsonField(require = false)
     private PageMeta.PageData pageData;
 
     public int getPage() {
@@ -42,8 +42,9 @@ public class Page {
     }
 
     public void prePage() {
-        if (page > 1)
+        if (page > 1) {
             page--;
+        }
     }
 
     public boolean hasNextPage() {

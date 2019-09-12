@@ -267,9 +267,9 @@ public class NetworkUtils {
                     default:
 
                         String subtypeName = info.getSubtypeName();
-                        if (subtypeName.equalsIgnoreCase("TD-SCDMA")
-                                || subtypeName.equalsIgnoreCase("WCDMA")
-                                || subtypeName.equalsIgnoreCase("CDMA2000")) {
+                        if ("TD-SCDMA".equalsIgnoreCase(subtypeName)
+                                || "WCDMA".equalsIgnoreCase(subtypeName)
+                                || "CDMA2000".equalsIgnoreCase(subtypeName)) {
                             netType = NetworkType.NETWORK_3G;
                         } else {
                             netType = NetworkType.NETWORK_UNKNOWN;
@@ -295,14 +295,18 @@ public class NetworkUtils {
             for (Enumeration<NetworkInterface> nis = NetworkInterface.getNetworkInterfaces(); nis.hasMoreElements(); ) {
                 NetworkInterface ni = nis.nextElement();
                 // 防止小米手机返回10.0.2.15
-                if (!ni.isUp()) continue;
+                if (!ni.isUp()) {
+                    continue;
+                }
                 for (Enumeration<InetAddress> addresses = ni.getInetAddresses(); addresses.hasMoreElements(); ) {
                     InetAddress inetAddress = addresses.nextElement();
                     if (!inetAddress.isLoopbackAddress()) {
                         String hostAddress = inetAddress.getHostAddress();
                         boolean isIPv4 = hostAddress.indexOf(':') < 0;
                         if (useIPv4) {
-                            if (isIPv4) return hostAddress;
+                            if (isIPv4) {
+                                return hostAddress;
+                            }
                         } else {
                             if (!isIPv4) {
                                 int index = hostAddress.indexOf('%');

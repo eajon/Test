@@ -724,8 +724,9 @@ public class TimeUtils {
     public static String getFriendlyTimeSpanByNow(long millis) {
         long now = System.currentTimeMillis();
         long span = now - millis;
-        if (span < 0)
+        if (span < 0) {
             return String.format("%tc", millis);// U can read http://www.apihome.cn/api/java/Formatter.html to understand it.
+        }
         if (span < 1000) {
             return "刚刚";
         } else if (span < ConstUtils.MIN) {

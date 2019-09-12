@@ -29,6 +29,7 @@ public abstract class ScanActivity extends BaseActivity {
         };
     }
 
+    @Override
     public void onResume() {
         super.onResume();
         //2.连接扫描服务
@@ -37,6 +38,7 @@ public abstract class ScanActivity extends BaseActivity {
     }
 
     // 4.在App不工作或者退到后台之后,有必要释放资源,关闭或者移除扫描服务
+    @Override
     public void onPause() {
         self.unregisterReceiver(mReceiver);
         super.onPause();

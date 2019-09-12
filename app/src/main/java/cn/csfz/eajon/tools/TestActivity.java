@@ -72,6 +72,7 @@ public class TestActivity extends FlycoActivity {
         return true;
     }
 
+    @Override
     protected void init(Bundle savedInstanceState) {
         initToolBar(false, true, false, false, false, false);
     }

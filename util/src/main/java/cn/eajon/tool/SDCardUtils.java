@@ -40,8 +40,9 @@ public class SDCardUtils {
     public static String getImageDir() {
         String imageCacheUrl = SDCardRoot + Utils.getContext().getPackageName() + File.separator + "image" + File.separator;
         File file = new File(imageCacheUrl);
-        if (!file.exists())
+        if (!file.exists()) {
             file.mkdir();  //如果不存在则创建
+        }
         return imageCacheUrl;
     }
 
@@ -97,8 +98,9 @@ public class SDCardUtils {
      **/
     public static void deleteFile(String filePath) {
         File file = new File(filePath);
-        if (file.isFile() && file.exists())
+        if (file.isFile() && file.exists()) {
             file.delete(); // 删除文件
+        }
     }
 
     /**
@@ -137,7 +139,9 @@ public class SDCardUtils {
      * @return SD卡路径
      */
     public static String getSDCardPath() {
-        if (!isSDCardEnable()) return "sdcard unable!";
+        if (!isSDCardEnable()) {
+            return "sdcard unable!";
+        }
         String cmd = "cat /proc/mounts";
         Runtime run = Runtime.getRuntime();
         BufferedReader bufferedReader = null;
@@ -170,7 +174,9 @@ public class SDCardUtils {
      * @return SD卡data路径
      */
     public static String getDataPath() {
-        if (!isSDCardEnable()) return "sdcard unable!";
+        if (!isSDCardEnable()) {
+            return "sdcard unable!";
+        }
         return Environment.getExternalStorageDirectory().getPath() + File.separator + "data" + File.separator;
     }
 
@@ -181,7 +187,9 @@ public class SDCardUtils {
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static String getFreeSpace() {
-        if (!isSDCardEnable()) return "sdcard unable!";
+        if (!isSDCardEnable()) {
+            return "sdcard unable!";
+        }
         StatFs stat = new StatFs(getSDCardPath());
         long blockSize, availableBlocks;
         availableBlocks = stat.getAvailableBlocksLong();
@@ -197,7 +205,9 @@ public class SDCardUtils {
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static String getSDCardInfo() {
         SDCardInfo sd = new SDCardInfo();
-        if (!isSDCardEnable()) return "sdcard unable!";
+        if (!isSDCardEnable()) {
+            return "sdcard unable!";
+        }
         sd.isExist = true;
         StatFs sf = new StatFs(Environment.getExternalStorageDirectory().getPath());
         sd.totalBlocks = sf.getBlockCountLong();

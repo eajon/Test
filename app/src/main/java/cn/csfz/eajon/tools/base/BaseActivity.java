@@ -94,35 +94,41 @@ public abstract class BaseActivity extends RxAppCompatActivity {
 
     protected void initToolBar(boolean isLeftTv, boolean isTitleTv, boolean isRightTv, boolean isLeftIv, boolean isCenterIv, boolean isRightIV) {
         if (null != toolbar) {
-            if (isLeftTv)
+            if (isLeftTv) {
                 leftTv.setVisibility(View.VISIBLE);
-            else
+            } else {
                 leftTv.setVisibility(View.GONE);
+            }
 
-            if (isTitleTv)
+            if (isTitleTv) {
                 titleTv.setVisibility(View.VISIBLE);
-            else
+            } else {
                 titleTv.setVisibility(View.GONE);
+            }
 
-            if (isRightTv)
+            if (isRightTv) {
                 rightTv.setVisibility(View.VISIBLE);
-            else
+            } else {
                 rightTv.setVisibility(View.GONE);
+            }
 
-            if (isLeftIv)
+            if (isLeftIv) {
                 leftIv.setVisibility(View.VISIBLE);
-            else
+            } else {
                 leftIv.setVisibility(View.GONE);
+            }
 
-            if (isCenterIv)
+            if (isCenterIv) {
                 centerIv.setVisibility(View.VISIBLE);
-            else
+            } else {
                 centerIv.setVisibility(View.GONE);
+            }
 
-            if (isRightIV)
+            if (isRightIV) {
                 rightIv.setVisibility(View.VISIBLE);
-            else
+            } else {
                 rightIv.setVisibility(View.GONE);
+            }
         }
     }
 }

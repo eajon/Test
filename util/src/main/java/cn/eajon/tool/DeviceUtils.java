@@ -100,7 +100,9 @@ public class DeviceUtils {
             WifiManager wifi = ( WifiManager ) Utils.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             if (wifi != null) {
                 WifiInfo info = wifi.getConnectionInfo();
-                if (info != null) return info.getMacAddress();
+                if (info != null) {
+                    return info.getMacAddress();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -118,7 +120,9 @@ public class DeviceUtils {
         try {
             List<NetworkInterface> nis = Collections.list(NetworkInterface.getNetworkInterfaces());
             for (NetworkInterface ni : nis) {
-                if (!ni.getName().equalsIgnoreCase("wlan0")) continue;
+                if (!"wlan0".equalsIgnoreCase(ni.getName())) {
+                    continue;
+                }
                 byte[] macBytes = ni.getHardwareAddress();
                 if (macBytes != null && macBytes.length > 0) {
                     StringBuilder res1 = new StringBuilder();

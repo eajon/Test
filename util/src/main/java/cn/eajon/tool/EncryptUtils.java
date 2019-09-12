@@ -100,7 +100,9 @@ public class EncryptUtils {
      * @return 16进制加盐密文
      */
     public static String encryptMD5ToString(byte[] data, byte[] salt) {
-        if (data == null || salt == null) return null;
+        if (data == null || salt == null) {
+            return null;
+        }
         byte[] dataSalt = new byte[data.length + salt.length];
         System.arraycopy(data, 0, dataSalt, 0, data.length);
         System.arraycopy(salt, 0, dataSalt, data.length, salt.length);
@@ -156,7 +158,9 @@ public class EncryptUtils {
      * @return 文件的MD5校验码
      */
     public static byte[] encryptMD5File(File file) {
-        if (file == null) return null;
+        if (file == null) {
+            return null;
+        }
         FileInputStream fis = null;
         DigestInputStream digestInputStream;
         try {
@@ -164,7 +168,9 @@ public class EncryptUtils {
             MessageDigest md = MessageDigest.getInstance("MD5");
             digestInputStream = new DigestInputStream(fis, md);
             byte[] buffer = new byte[256 * 1024];
-            while (digestInputStream.read(buffer) > 0) ;
+            while (digestInputStream.read(buffer) > 0) {
+                ;
+            }
             md = digestInputStream.getMessageDigest();
             return md.digest();
         } catch (NoSuchAlgorithmException | IOException e) {
@@ -333,7 +339,9 @@ public class EncryptUtils {
      * @return 密文字节数组
      */
     private static byte[] hashTemplate(byte[] data, String algorithm) {
-        if (data == null || data.length <= 0) return null;
+        if (data == null || data.length <= 0) {
+            return null;
+        }
         try {
             MessageDigest md = MessageDigest.getInstance(algorithm);
             md.update(data);
@@ -551,7 +559,9 @@ public class EncryptUtils {
      * @return 密文字节数组
      */
     private static byte[] hmacTemplate(byte[] data, byte[] key, String algorithm) {
-        if (data == null || data.length == 0 || key == null || key.length == 0) return null;
+        if (data == null || data.length == 0 || key == null || key.length == 0) {
+            return null;
+        }
         try {
             SecretKeySpec secretKey = new SecretKeySpec(key, algorithm);
             Mac mac = Mac.getInstance(algorithm);
@@ -570,8 +580,8 @@ public class EncryptUtils {
      * <p>加密模式有：电子密码本模式ECB、加密块链模式CBC、加密反馈模式CFB、输出反馈模式OFB</p>
      * <p>填充方式有：NoPadding、ZerosPadding、PKCS5Padding</p>
      */
-    public static String DES_Transformation = "DES/ECB/NoPadding";
-    private static final String DES_Algorithm = "DES";
+    private final static String DES_TRANSFORMATION = "DES/ECB/NoPadding";
+    private final static String DES_ALGORITHM = "DES";
 
     /**
      * DES加密后转为Base64编码
@@ -603,7 +613,7 @@ public class EncryptUtils {
      * @return 密文
      */
     public static byte[] encryptDES(byte[] data, byte[] key) {
-        return desTemplate(data, key, DES_Algorithm, DES_Transformation, true);
+        return desTemplate(data, key, DES_ALGORITHM, DES_TRANSFORMATION, true);
     }
 
     /**
@@ -636,7 +646,7 @@ public class EncryptUtils {
      * @return 明文
      */
     public static byte[] decryptDES(byte[] data, byte[] key) {
-        return desTemplate(data, key, DES_Algorithm, DES_Transformation, false);
+        return desTemplate(data, key, DES_ALGORITHM, DES_TRANSFORMATION, false);
     }
 
     /************************ 3DES加密相关 ***********************/
@@ -646,8 +656,8 @@ public class EncryptUtils {
      * <p>加密模式有：电子密码本模式ECB、加密块链模式CBC、加密反馈模式CFB、输出反馈模式OFB</p>
      * <p>填充方式有：NoPadding、ZerosPadding、PKCS5Padding</p>
      */
-    public static String TripleDES_Transformation = "DESede/ECB/NoPadding";
-    private static final String TripleDES_Algorithm = "DESede";
+    private final static String TRIPLE_DES_TRANSFORMATION = "DESede/ECB/NoPadding";
+    private final static String TRIPLE_DES_ALGORITHM = "DESede";
 
 
     /**
@@ -680,7 +690,7 @@ public class EncryptUtils {
      * @return 密文
      */
     public static byte[] encrypt3DES(byte[] data, byte[] key) {
-        return desTemplate(data, key, TripleDES_Algorithm, TripleDES_Transformation, true);
+        return desTemplate(data, key, TRIPLE_DES_ALGORITHM, TRIPLE_DES_TRANSFORMATION, true);
     }
 
     /**
@@ -713,7 +723,7 @@ public class EncryptUtils {
      * @return 明文
      */
     public static byte[] decrypt3DES(byte[] data, byte[] key) {
-        return desTemplate(data, key, TripleDES_Algorithm, TripleDES_Transformation, false);
+        return desTemplate(data, key, TRIPLE_DES_ALGORITHM, TRIPLE_DES_TRANSFORMATION, false);
     }
 
     /************************ AES加密相关 ***********************/
@@ -723,8 +733,8 @@ public class EncryptUtils {
      * <p>加密模式有：电子密码本模式ECB、加密块链模式CBC、加密反馈模式CFB、输出反馈模式OFB</p>
      * <p>填充方式有：NoPadding、ZerosPadding、PKCS5Padding</p>
      */
-    public static String AES_Transformation = "AES/ECB/NoPadding";
-    private static final String AES_Algorithm = "AES";
+    private final static String AES_TRANSFORMATION = "AES/ECB/NoPadding";
+    private final static String AES_ALGORITHM = "AES";
 
 
     /**
@@ -757,7 +767,7 @@ public class EncryptUtils {
      * @return 密文
      */
     public static byte[] encryptAES(byte[] data, byte[] key) {
-        return desTemplate(data, key, AES_Algorithm, AES_Transformation, true);
+        return desTemplate(data, key, AES_ALGORITHM, AES_TRANSFORMATION, true);
     }
 
     /**
@@ -790,7 +800,7 @@ public class EncryptUtils {
      * @return 明文
      */
     public static byte[] decryptAES(byte[] data, byte[] key) {
-        return desTemplate(data, key, AES_Algorithm, AES_Transformation, false);
+        return desTemplate(data, key, AES_ALGORITHM, AES_TRANSFORMATION, false);
     }
 
     /**
@@ -804,7 +814,9 @@ public class EncryptUtils {
      * @return 密文或者明文，适用于DES，3DES，AES
      */
     public static byte[] desTemplate(byte[] data, byte[] key, String algorithm, String transformation, boolean isEncrypt) {
-        if (data == null || data.length == 0 || key == null || key.length == 0) return null;
+        if (data == null || data.length == 0 || key == null || key.length == 0) {
+            return null;
+        }
         try {
             SecretKeySpec keySpec = new SecretKeySpec(key, algorithm);
             Cipher cipher = Cipher.getInstance(transformation);

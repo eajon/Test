@@ -10,6 +10,14 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * <pre>
@@ -285,26 +293,28 @@ public class LogUtils {
      * @param content 内容
      **/
     private synchronized static void log2File(final char type, final String tag, final String content) {
-        if (content == null) return;
+        if (content == null) {
+            return;
+        }
         Date now = new Date();
         String date = new SimpleDateFormat("MM-dd", Locale.getDefault()).format(now);
         final String fullPath = dir + date + ".txt";
-        if (!FileUtils.createOrExistsFile(fullPath)) return;
+        if (!FileUtils.createOrExistsFile(fullPath)) {
+            return;
+        }
         String time = new SimpleDateFormat("MM-dd HH:mm:ss.SSS", Locale.getDefault()).format(now);
         final String dateLogContent = time + ":" + type + ":" + tag + ":" + content + '\n';
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                BufferedWriter bw = null;
-                try {
-                    bw = new BufferedWriter(new FileWriter(fullPath, true));
-                    bw.write(dateLogContent);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    CloseUtils.closeIO(bw);
-                }
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(() -> {
+            BufferedWriter bw = null;
+            try {
+                bw = new BufferedWriter(new FileWriter(fullPath, true));
+                bw.write(dateLogContent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                CloseUtils.closeIO(bw);
             }
-        }).start();
+        });
     }
 }
