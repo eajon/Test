@@ -10,5 +10,5 @@
 	}
  #### Step 2. Add the dependency
   	dependencies {
-	        implementation 'com.github.eajon:Test:Tag'
+	        implementation 'com.github.eajon:Tools:1.0.8'
 	}
