@@ -17,6 +17,8 @@ public class ActivityUtils {
 
     private final static String DATA = "DATA";
 
+    private final static String RESULT = "RESULT";
+
 
     private ActivityUtils() {
         throw new AssertionError();
@@ -103,6 +105,31 @@ public class ActivityUtils {
     }
 
 
+    public static void setResult(Activity self, Object data) {
+        Intent intent = new Intent();
+        intent.putExtra(RESULT, new Gson().toJson(data));
+        self.setResult(Activity.RESULT_OK, intent);
+    }
+
+    public static void setResult(Activity self, Object data, Type type) {
+        Intent intent = new Intent();
+        intent.putExtra(RESULT, new Gson().toJson(data, type));
+        self.setResult(Activity.RESULT_OK, intent);
+    }
+
+    public static void setResult(Activity self, Object data, int resultCode) {
+        Intent intent = new Intent();
+        intent.putExtra(RESULT, new Gson().toJson(data));
+        self.setResult(resultCode, intent);
+    }
+
+    public static void setResult(Activity self, Object data, Type type, int resultCode) {
+        Intent intent = new Intent();
+        intent.putExtra(RESULT, new Gson().toJson(data, type));
+        self.setResult(resultCode, intent);
+    }
+
+
     @SuppressWarnings("unchecked")
     public static <T> T getData(Activity self, Class<T> val) {
         return new Gson().fromJson(self.getIntent().getStringExtra(DATA), val);
@@ -111,6 +138,16 @@ public class ActivityUtils {
     @SuppressWarnings("unchecked")
     public static <T> T getData(Activity self, TypeToken<T> val) {
         return new Gson().fromJson(self.getIntent().getStringExtra(DATA), val.getType());
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T getResult(Intent intent, Class<T> val) {
+        return new Gson().fromJson(intent.getStringExtra(RESULT), val);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T getResult(Intent intent, TypeToken<T> val) {
+        return new Gson().fromJson(intent.getStringExtra(RESULT), val.getType());
     }
 
 

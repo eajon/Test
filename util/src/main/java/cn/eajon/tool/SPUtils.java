@@ -42,7 +42,7 @@ public class SPUtils {
      *
      * @param preferenceName name for the shared preference
      */
-    public static void initName(String preferenceName) {
+    public static void initPreferenceName(String preferenceName) {
         PREFERENCE_NAME = preferenceName;
     }
 
