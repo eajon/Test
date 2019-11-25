@@ -91,6 +91,7 @@ public class ActivityUtils {
         Intent intent = new Intent();
         intent.setClass(self, activity);
         intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
         self.startActivityForResult(intent, requestCode);
     }
 
@@ -99,6 +100,7 @@ public class ActivityUtils {
         intent.setClass(self, activity);
         intent.putExtra(DATA, new Gson().toJson(data));
         intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
         self.startActivityForResult(intent, requestCode);
     }
 
@@ -107,6 +109,34 @@ public class ActivityUtils {
         intent.setClass(self, activity);
         intent.putExtra(DATA, new Gson().toJson(data, type));
         intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+
+    public static void toActivityForResult(Activity self, Class activity, int requestCode, int resultCode) {
+        Intent intent = new Intent();
+        intent.setClass(self, activity);
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, resultCode);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Activity self, Class activity, Object data, int requestCode, int resultCode) {
+        Intent intent = new Intent();
+        intent.setClass(self, activity);
+        intent.putExtra(DATA, new Gson().toJson(data));
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, resultCode);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Activity self, Class activity, Object data, Type type, int requestCode, int resultCode) {
+        Intent intent = new Intent();
+        intent.setClass(self, activity);
+        intent.putExtra(DATA, new Gson().toJson(data, type));
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, resultCode);
         self.startActivityForResult(intent, requestCode);
     }
 
@@ -115,7 +145,7 @@ public class ActivityUtils {
         Intent intent = new Intent();
         intent.putExtra(RESULT, new Gson().toJson(data));
         intent.putExtra(REQUEST_CODE, self.getIntent().getIntExtra(REQUEST_CODE, 0));
-        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
+        intent.putExtra(RESULT_CODE, self.getIntent().getIntExtra(RESULT_CODE, 0));
         self.setResult(Activity.RESULT_OK, intent);
     }
 
@@ -123,25 +153,11 @@ public class ActivityUtils {
         Intent intent = new Intent();
         intent.putExtra(RESULT, new Gson().toJson(data, type));
         intent.putExtra(REQUEST_CODE, self.getIntent().getIntExtra(REQUEST_CODE, 0));
-        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
+        intent.putExtra(RESULT_CODE, self.getIntent().getIntExtra(RESULT_CODE, 0));
         self.setResult(Activity.RESULT_OK, intent);
     }
 
-    public static void setResult(Activity self, Object data, int resultCode) {
-        Intent intent = new Intent();
-        intent.putExtra(RESULT, new Gson().toJson(data));
-        intent.putExtra(REQUEST_CODE, self.getIntent().getIntExtra(REQUEST_CODE, 0));
-        intent.putExtra(RESULT_CODE, resultCode);
-        self.setResult(resultCode, intent);
-    }
 
-    public static void setResult(Activity self, Object data, Type type, int resultCode) {
-        Intent intent = new Intent();
-        intent.putExtra(RESULT, new Gson().toJson(data, type));
-        intent.putExtra(REQUEST_CODE, self.getIntent().getIntExtra(REQUEST_CODE, 0));
-        intent.putExtra(RESULT_CODE, resultCode);
-        self.setResult(resultCode, intent);
-    }
 
 
     @SuppressWarnings("unchecked")
@@ -152,6 +168,24 @@ public class ActivityUtils {
     @SuppressWarnings("unchecked")
     public static <T> T getData(Activity self, TypeToken<T> val) {
         return new Gson().fromJson(self.getIntent().getStringExtra(DATA), val.getType());
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T getResult(Intent intent, Class<T> val, int requestCode) {
+        if (requestCode == intent.getIntExtra(REQUEST_CODE, 0) && Activity.RESULT_OK == intent.getIntExtra(RESULT_CODE, 0)) {
+            return new Gson().fromJson(intent.getStringExtra(RESULT), val);
+        } else {
+            return null;
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T getResult(Intent intent, TypeToken<T> val, int requestCode) {
+        if (requestCode == intent.getIntExtra(REQUEST_CODE, 0) && Activity.RESULT_OK == intent.getIntExtra(RESULT_CODE, 0)) {
+            return new Gson().fromJson(intent.getStringExtra(RESULT), val.getType());
+        } else {
+            return null;
+        }
     }
 
     @SuppressWarnings("unchecked")
