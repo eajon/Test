@@ -169,7 +169,7 @@ public class ActivityUtils {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T getResult(Intent intent, Class<T> val, int requestCode, int resultCode) {
+    public static <T> T getResult(int requestCode, int resultCode, Intent intent, Class<T> val) {
         if (intent != null && requestCode == intent.getIntExtra(REQUEST_CODE, 0) && resultCode == intent.getIntExtra(RESULT_CODE, 0)) {
             return new Gson().fromJson(intent.getStringExtra(RESULT), val);
         } else {
@@ -178,7 +178,7 @@ public class ActivityUtils {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T getResult(Intent intent, TypeToken<T> val, int requestCode, int resultCode) {
+    public static <T> T getResult(int requestCode, int resultCode, Intent intent, TypeToken<T> val) {
         if (intent != null && requestCode == intent.getIntExtra(REQUEST_CODE, 0) && resultCode == intent.getIntExtra(RESULT_CODE, 0)) {
             return new Gson().fromJson(intent.getStringExtra(RESULT), val.getType());
         } else {
