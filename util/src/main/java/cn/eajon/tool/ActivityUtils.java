@@ -158,8 +158,6 @@ public class ActivityUtils {
     }
 
 
-
-
     @SuppressWarnings("unchecked")
     public static <T> T getData(Activity self, Class<T> val) {
         return new Gson().fromJson(self.getIntent().getStringExtra(DATA), val);
@@ -171,26 +169,8 @@ public class ActivityUtils {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T getResult(Intent intent, Class<T> val, int requestCode) {
-        if (requestCode == intent.getIntExtra(REQUEST_CODE, 0) && Activity.RESULT_OK == intent.getIntExtra(RESULT_CODE, 0)) {
-            return new Gson().fromJson(intent.getStringExtra(RESULT), val);
-        } else {
-            return null;
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T> T getResult(Intent intent, TypeToken<T> val, int requestCode) {
-        if (requestCode == intent.getIntExtra(REQUEST_CODE, 0) && Activity.RESULT_OK == intent.getIntExtra(RESULT_CODE, 0)) {
-            return new Gson().fromJson(intent.getStringExtra(RESULT), val.getType());
-        } else {
-            return null;
-        }
-    }
-
-    @SuppressWarnings("unchecked")
     public static <T> T getResult(Intent intent, Class<T> val, int requestCode, int resultCode) {
-        if (requestCode == intent.getIntExtra(REQUEST_CODE, 0) && resultCode == intent.getIntExtra(RESULT_CODE, 0)) {
+        if (intent != null && requestCode == intent.getIntExtra(REQUEST_CODE, 0) && resultCode == intent.getIntExtra(RESULT_CODE, 0)) {
             return new Gson().fromJson(intent.getStringExtra(RESULT), val);
         } else {
             return null;
@@ -199,7 +179,7 @@ public class ActivityUtils {
 
     @SuppressWarnings("unchecked")
     public static <T> T getResult(Intent intent, TypeToken<T> val, int requestCode, int resultCode) {
-        if (requestCode == intent.getIntExtra(REQUEST_CODE, 0) && resultCode == intent.getIntExtra(RESULT_CODE, 0)) {
+        if (intent != null && requestCode == intent.getIntExtra(REQUEST_CODE, 0) && resultCode == intent.getIntExtra(RESULT_CODE, 0)) {
             return new Gson().fromJson(intent.getStringExtra(RESULT), val.getType());
         } else {
             return null;
