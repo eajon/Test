@@ -5,8 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.fragment.app.Fragment;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.trello.rxlifecycle3.android.FragmentEvent;
 
 import java.lang.reflect.Type;
 
@@ -134,6 +137,81 @@ public class ActivityUtils {
     public static void toActivityForResult(Activity self, Class activity, Object data, Type type, int requestCode, int resultCode) {
         Intent intent = new Intent();
         intent.setClass(self, activity);
+        intent.putExtra(DATA, new Gson().toJson(data, type));
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, resultCode);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+
+    public static void toActivity(Fragment self, Class activity) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), activity);
+        self.startActivity(intent);
+    }
+
+    public static void toActivity(Fragment self, Class activity, Object data) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), activity);
+        intent.putExtra(DATA, new Gson().toJson(data));
+        self.startActivity(intent);
+    }
+
+    public static void toActivity(Fragment self, Class activity, Type type, Object data) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), activity);
+        intent.putExtra(DATA, new Gson().toJson(data, type));
+        self.startActivity(intent);
+    }
+
+
+    public static void toActivityForResult(Fragment self, Class activity, int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), activity);
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Fragment self, Class activity, Object data, int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), activity);
+        intent.putExtra(DATA, new Gson().toJson(data));
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Fragment self, Class activity, Object data, Type type, int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), activity);
+        intent.putExtra(DATA, new Gson().toJson(data, type));
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+
+    public static void toActivityForResult(Fragment self, Class activity, int requestCode, int resultCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), activity);
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, resultCode);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Fragment self, Class activity, Object data, int requestCode, int resultCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), activity);
+        intent.putExtra(DATA, new Gson().toJson(data));
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, resultCode);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Fragment self, Class activity, Object data, Type type, int requestCode, int resultCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), activity);
         intent.putExtra(DATA, new Gson().toJson(data, type));
         intent.putExtra(REQUEST_CODE, requestCode);
         intent.putExtra(RESULT_CODE, resultCode);
