@@ -69,122 +69,47 @@ public class ActivityUtils {
         context.startActivity(IntentUtils.getComponentIntent(packageName, className, bundle));
     }
 
-    public static void toActivity(Activity self, Class activity) {
+    public static void toActivity(Activity self, Class clazz) {
         Intent intent = new Intent();
-        intent.setClass(self, activity);
+        intent.setClass(self, clazz);
         self.startActivity(intent);
     }
 
-    public static void toActivity(Activity self, Class activity, Object data) {
+    public static void toActivity(Activity self, Class clazz, Object data) {
         Intent intent = new Intent();
-        intent.setClass(self, activity);
+        intent.setClass(self, clazz);
         intent.putExtra(DATA, new Gson().toJson(data));
         self.startActivity(intent);
     }
 
-    public static void toActivity(Activity self, Class activity, Type type, Object data) {
+    public static void toActivity(Activity self, Class clazz, Type type, Object data) {
         Intent intent = new Intent();
-        intent.setClass(self, activity);
+        intent.setClass(self, clazz);
         intent.putExtra(DATA, new Gson().toJson(data, type));
         self.startActivity(intent);
     }
 
 
-    public static void toActivityForResult(Activity self, Class activity, int requestCode) {
+    public static void toActivityForResult(Activity self, Class clazz, int requestCode) {
         Intent intent = new Intent();
-        intent.setClass(self, activity);
+        intent.setClass(self, clazz);
         intent.putExtra(REQUEST_CODE, requestCode);
         intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
         self.startActivityForResult(intent, requestCode);
     }
 
-    public static void toActivityForResult(Activity self, Class activity, Object data, int requestCode) {
+    public static void toActivityForResult(Activity self, Class clazz, Object data, int requestCode) {
         Intent intent = new Intent();
-        intent.setClass(self, activity);
+        intent.setClass(self, clazz);
         intent.putExtra(DATA, new Gson().toJson(data));
         intent.putExtra(REQUEST_CODE, requestCode);
         intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
         self.startActivityForResult(intent, requestCode);
     }
 
-    public static void toActivityForResult(Activity self, Class activity, Object data, Type type, int requestCode) {
+    public static void toActivityForResult(Activity self, Class clazz, Object data, Type type, int requestCode) {
         Intent intent = new Intent();
-        intent.setClass(self, activity);
-        intent.putExtra(DATA, new Gson().toJson(data, type));
-        intent.putExtra(REQUEST_CODE, requestCode);
-        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
-        self.startActivityForResult(intent, requestCode);
-    }
-
-
-    public static void toActivityForResult(Activity self, Class activity, int requestCode, int resultCode) {
-        Intent intent = new Intent();
-        intent.setClass(self, activity);
-        intent.putExtra(REQUEST_CODE, requestCode);
-        intent.putExtra(RESULT_CODE, resultCode);
-        self.startActivityForResult(intent, requestCode);
-    }
-
-    public static void toActivityForResult(Activity self, Class activity, Object data, int requestCode, int resultCode) {
-        Intent intent = new Intent();
-        intent.setClass(self, activity);
-        intent.putExtra(DATA, new Gson().toJson(data));
-        intent.putExtra(REQUEST_CODE, requestCode);
-        intent.putExtra(RESULT_CODE, resultCode);
-        self.startActivityForResult(intent, requestCode);
-    }
-
-    public static void toActivityForResult(Activity self, Class activity, Object data, Type type, int requestCode, int resultCode) {
-        Intent intent = new Intent();
-        intent.setClass(self, activity);
-        intent.putExtra(DATA, new Gson().toJson(data, type));
-        intent.putExtra(REQUEST_CODE, requestCode);
-        intent.putExtra(RESULT_CODE, resultCode);
-        self.startActivityForResult(intent, requestCode);
-    }
-
-
-    public static void toActivity(Fragment self, Class activity) {
-        Intent intent = new Intent();
-        intent.setClass(self.requireActivity(), activity);
-        self.startActivity(intent);
-    }
-
-    public static void toActivity(Fragment self, Class activity, Object data) {
-        Intent intent = new Intent();
-        intent.setClass(self.requireActivity(), activity);
-        intent.putExtra(DATA, new Gson().toJson(data));
-        self.startActivity(intent);
-    }
-
-    public static void toActivity(Fragment self, Class activity, Type type, Object data) {
-        Intent intent = new Intent();
-        intent.setClass(self.requireActivity(), activity);
-        intent.putExtra(DATA, new Gson().toJson(data, type));
-        self.startActivity(intent);
-    }
-
-
-    public static void toActivityForResult(Fragment self, Class activity, int requestCode) {
-        Intent intent = new Intent();
-        intent.setClass(self.requireActivity(), activity);
-        intent.putExtra(REQUEST_CODE, requestCode);
-        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
-        self.startActivityForResult(intent, requestCode);
-    }
-
-    public static void toActivityForResult(Fragment self, Class activity, Object data, int requestCode) {
-        Intent intent = new Intent();
-        intent.setClass(self.requireActivity(), activity);
-        intent.putExtra(DATA, new Gson().toJson(data));
-        intent.putExtra(REQUEST_CODE, requestCode);
-        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
-        self.startActivityForResult(intent, requestCode);
-    }
-
-    public static void toActivityForResult(Fragment self, Class activity, Object data, Type type, int requestCode) {
-        Intent intent = new Intent();
-        intent.setClass(self.requireActivity(), activity);
+        intent.setClass(self, clazz);
         intent.putExtra(DATA, new Gson().toJson(data, type));
         intent.putExtra(REQUEST_CODE, requestCode);
         intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
@@ -192,26 +117,101 @@ public class ActivityUtils {
     }
 
 
-    public static void toActivityForResult(Fragment self, Class activity, int requestCode, int resultCode) {
+    public static void toActivityForResult(Activity self, Class clazz, int requestCode, int resultCode) {
         Intent intent = new Intent();
-        intent.setClass(self.requireActivity(), activity);
+        intent.setClass(self, clazz);
         intent.putExtra(REQUEST_CODE, requestCode);
         intent.putExtra(RESULT_CODE, resultCode);
         self.startActivityForResult(intent, requestCode);
     }
 
-    public static void toActivityForResult(Fragment self, Class activity, Object data, int requestCode, int resultCode) {
+    public static void toActivityForResult(Activity self, Class clazz, Object data, int requestCode, int resultCode) {
         Intent intent = new Intent();
-        intent.setClass(self.requireActivity(), activity);
+        intent.setClass(self, clazz);
         intent.putExtra(DATA, new Gson().toJson(data));
         intent.putExtra(REQUEST_CODE, requestCode);
         intent.putExtra(RESULT_CODE, resultCode);
         self.startActivityForResult(intent, requestCode);
     }
 
-    public static void toActivityForResult(Fragment self, Class activity, Object data, Type type, int requestCode, int resultCode) {
+    public static void toActivityForResult(Activity self, Class clazz, Object data, Type type, int requestCode, int resultCode) {
         Intent intent = new Intent();
-        intent.setClass(self.requireActivity(), activity);
+        intent.setClass(self, clazz);
+        intent.putExtra(DATA, new Gson().toJson(data, type));
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, resultCode);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+
+    public static void toActivity(Fragment self, Class clazz) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), clazz);
+        self.startActivity(intent);
+    }
+
+    public static void toActivity(Fragment self, Class clazz, Object data) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), clazz);
+        intent.putExtra(DATA, new Gson().toJson(data));
+        self.startActivity(intent);
+    }
+
+    public static void toActivity(Fragment self, Class clazz, Type type, Object data) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), clazz);
+        intent.putExtra(DATA, new Gson().toJson(data, type));
+        self.startActivity(intent);
+    }
+
+
+    public static void toActivityForResult(Fragment self, Class clazz, int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), clazz);
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Fragment self, Class clazz, Object data, int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), clazz);
+        intent.putExtra(DATA, new Gson().toJson(data));
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Fragment self, Class clazz, Object data, Type type, int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), clazz);
+        intent.putExtra(DATA, new Gson().toJson(data, type));
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, Activity.RESULT_OK);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+
+    public static void toActivityForResult(Fragment self, Class clazz, int requestCode, int resultCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), clazz);
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, resultCode);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Fragment self, Class clazz, Object data, int requestCode, int resultCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), clazz);
+        intent.putExtra(DATA, new Gson().toJson(data));
+        intent.putExtra(REQUEST_CODE, requestCode);
+        intent.putExtra(RESULT_CODE, resultCode);
+        self.startActivityForResult(intent, requestCode);
+    }
+
+    public static void toActivityForResult(Fragment self, Class clazz, Object data, Type type, int requestCode, int resultCode) {
+        Intent intent = new Intent();
+        intent.setClass(self.requireActivity(), clazz);
         intent.putExtra(DATA, new Gson().toJson(data, type));
         intent.putExtra(REQUEST_CODE, requestCode);
         intent.putExtra(RESULT_CODE, resultCode);
