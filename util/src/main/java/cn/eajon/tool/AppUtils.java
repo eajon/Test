@@ -45,8 +45,8 @@ public class AppUtils {
      * @param context  上下文
      * @param filePath 文件路径
      */
-    public static void installApp(Context context, String filePath) {
-        installApp(context, FileUtils.getFileByPath(filePath));
+    public static void installApp(Context context, String filePath,String authority) {
+        installApp(context, FileUtils.getFileByPath(filePath),authority);
     }
 
     /**
@@ -55,37 +55,14 @@ public class AppUtils {
      * @param context 上下文
      * @param file    文件
      */
-    public static void installApp(Context context, File file) {
+    public static void installApp(Context context, File file,String authority) {
         if (!FileUtils.isFileExists(file)) {
             return;
         }
-        context.startActivity(IntentUtils.getInstallAppIntent(file));
+        context.startActivity(IntentUtils.getInstallAppIntent(file,authority));
     }
 
-    /**
-     * 安装App（支持6.0）
-     *
-     * @param activity    activity
-     * @param filePath    文件路径
-     * @param requestCode 请求值
-     */
-    public static void installApp(Activity activity, String filePath, int requestCode) {
-        installApp(activity, FileUtils.getFileByPath(filePath), requestCode);
-    }
 
-    /**
-     * 安装App(支持6.0)
-     *
-     * @param activity    activity
-     * @param file        文件
-     * @param requestCode 请求值
-     */
-    public static void installApp(Activity activity, File file, int requestCode) {
-        if (!FileUtils.isFileExists(file)) {
-            return;
-        }
-        activity.startActivityForResult(IntentUtils.getInstallAppIntent(file), requestCode);
-    }
 
     /**
      * 静默安装App

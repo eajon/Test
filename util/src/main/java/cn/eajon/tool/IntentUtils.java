@@ -21,43 +21,6 @@ public class IntentUtils {
     }
 
     /**
-     * 获取安装App（支持6.0）的意图
-     *
-     * @param filePath 文件路径
-     * @return intent
-     */
-    public static Intent getInstallAppIntent(String filePath) {
-        return getInstallAppIntent(FileUtils.getFileByPath(filePath));
-    }
-
-    /**
-     * 获取安装App(支持6.0)的意图
-     *
-     * @param file 文件
-     * @return intent
-     */
-    public static Intent getInstallAppIntent(File file) {
-        if (file == null) {
-            return null;
-        }
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        String type;
-
-        if (Build.VERSION.SDK_INT < 23) {
-            type = "application/vnd.android.package-archive";
-        } else {
-            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(FileUtils.getFileExtension(file));
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(Utils.getContext(), Utils.getContext().getPackageName() + ".fileprovider", file);
-            intent.setDataAndType(contentUri, type);
-        }
-        intent.setDataAndType(Uri.fromFile(file), type);
-        return intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    }
-
-    /**
      * 获取安装App(支持6.0)的意图
      *
      * @param file      文件
@@ -70,21 +33,19 @@ public class IntentUtils {
         }
         Intent intent = new Intent(Intent.ACTION_VIEW);
         String type;
-
-        if (Build.VERSION.SDK_INT < 23) {
-            type = "application/vnd.android.package-archive";
-        } else {
-            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(FileUtils.getFileExtension(file));
-        }
+        Uri uri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(FileUtils.getFileExtension(file));
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(Utils.getContext(), authority, file);
-            intent.setDataAndType(contentUri, type);
+            uri = FileProvider.getUriForFile(Utils.getContext(), authority, file);
+        } else {
+            type = "application/vnd.android.package-archive";
+            uri = Uri.fromFile(file);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         }
-        intent.setDataAndType(Uri.fromFile(file), type);
-        return intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setDataAndType(uri, type);
+        return intent;
     }
-
 
 
     /**
